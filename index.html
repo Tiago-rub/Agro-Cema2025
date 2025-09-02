@@ -1,0 +1,698 @@
+<!Doctype html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Agro na Escola</title>
+  <meta name="description" content="Site escolar sobre o agroécologia: solo, culturas, pecuária e sustentabilidade." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0f0c;
+      /* fundo */
+      --card: #121712;
+      /* cartões */
+      --text: #eaf2e8;
+      /* texto */
+      --muted: #b9c6b5;
+      /* texto secundário */
+      --brand: #47b36b;
+      /* verde principal */
+      --brand-2: #2a7a47;
+      /* verde escuro */
+      --accent: #dff5e7;
+      /* destaque claro */
+      --radius: 18px;
+      --shadow: 0 10px 30px rgba(0, 0, 0, .25);
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background: linear-gradient(180deg, #0a120c, #0b0f0c 35%, #0a120c);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none
+    }
+
+    img {
+      max-width: 100%;
+      display: block
+    }
+
+    .container {
+      width: min(1100px, 92%);
+      margin-inline: auto
+    }
+
+    /* Header / Nav */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(10, 16, 12, .7);
+      backdrop-filter: saturate(1.2) blur(8px);
+      border-bottom: 1px solid rgba(255, 255, 255, .06);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0
+    }
+
+    .brand {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      font-weight: 800;
+      letter-spacing: .3px
+    }
+
+    .brand .logo {
+      width: 90px;
+      height: 20px;
+      border-radius: 5px;
+      display: flex;
+      place-items: center;
+    }
+
+    .menu {
+      display: flex;
+      gap: 18px;
+      align-items: center
+    }
+
+    .menu a {
+      padding: 8px 10px;
+      border-radius: 10px;
+      color: var(--muted)
+    }
+
+    .menu a:hover,
+    .menu a.active {
+      color: var(--text);
+      background: rgba(71, 179, 107, .12)
+    }
+
+    .cta {
+      background: var(--brand);
+      color: #09110b;
+      font-weight: 700;
+      padding: 9px 14px;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 6px 16px rgba(71, 179, 107, .35)
+    }
+
+    .burger {
+      display: none;
+      cursor: pointer;
+      padding: 8px 10px;
+      border-radius: 10px
+    }
+
+    .burger:hover {
+      background: rgba(255, 255, 255, .08)
+    }
+
+    /* Hero */
+    .hero {
+      padding: 64px 0 28px;
+      position: relative;
+      overflow: hidden
+    }
+
+    .hero-grid {
+      display: grid;
+      gap: 32px;
+      grid-template-columns: 1.1fr .9fr;
+      align-items: center
+    }
+
+    .badge {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      background: rgba(71, 179, 107, .14);
+      color: #cfead7;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: .9rem
+    }
+
+    h1 {
+      font-size: clamp(2rem, 3.6vw, 3.2rem);
+      line-height: 1.1;
+      margin: 14px 0 10px
+    }
+
+    .lead {
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin: 0 0 18px
+    }
+
+    .hero-card {
+      background: linear-gradient(180deg, rgba(71, 179, 107, .22), rgba(71, 179, 107, .06));
+      border: 1px solid rgba(255, 255, 255, .08);
+      border-radius: var(--radius);
+      padding: 16px;
+      display: grid;
+      gap: 12px
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px
+    }
+
+    .stat {
+      background: var(--card);
+      padding: 14px;
+      border-radius: 14px;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, .06)
+    }
+
+    .stat b {
+      font-size: 1.2rem;
+      display: block
+    }
+
+    .hero-img {
+      aspect-ratio: 4/3;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, .06);
+      background: url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?q=80&w=1400&auto=format&fit=crop') center/cover no-repeat;
+      box-shadow: var(--shadow)
+    }
+
+    /* Sections */
+    section {
+      padding: 48px 0
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px
+    }
+
+    .section-title h2 {
+      margin: 0;
+      font-size: clamp(1.4rem, 2.6vw, 2rem)
+    }
+
+    .muted {
+      color: var(--muted)
+    }
+
+    /* Cards grid */
+    .grid {
+      display: grid;
+      gap: 16px
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, 1fr)
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(2, 1fr)
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid rgba(255, 255, 255, .06);
+      border-radius: var(--radius);
+      overflow: hidden
+    }
+
+    .card>.img {
+      aspect-ratio: 16/9;
+      background: #0e140f
+    }
+
+    .card-body {
+      padding: 14px
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: .8rem;
+      background: rgba(71, 179, 107, .14);
+      color: #cfead7;
+      padding: 4px 8px;
+      border-radius: 999px;
+      margin-bottom: 8px
+    }
+
+    /* Timeline (Eventos) */
+    .timeline {
+      display: grid;
+      gap: 12px
+    }
+
+    .event {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 14px;
+      align-items: start;
+      background: var(--card);
+      border: 1px solid rgba(255, 255, 255, .06);
+      border-radius: 16px;
+      padding: 12px
+    }
+
+    .event .date {
+      background: rgba(71, 179, 107, .14);
+      border: 1px dashed rgba(71, 179, 107, .5);
+      border-radius: 12px;
+      padding: 10px 8px;
+      text-align: center
+    }
+
+    .event .date b {
+      display: block;
+      font-size: 1.2rem
+    }
+
+    /* Rodapé */
+    footer {
+      padding: 28px 0 48px;
+      color: var(--muted)
+    }
+
+    .footer-grid {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: 2fr 1fr 1fr
+    }
+
+    .footer-grid a {
+      color: var(--muted)
+    }
+
+    .copyright {
+      margin-top: 16px;
+      font-size: .9rem;
+      text-align: center
+    }
+
+    /* Responsivo */
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1fr
+      }
+
+      .grid-3 {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr
+      }
+    }
+
+    @media (max-width: 640px) {
+      .menu {
+        display: none
+      }
+
+      .burger {
+        display: block
+      }
+
+      .grid-3,
+      .grid-2 {
+        grid-template-columns: 1fr
+      }
+
+      .event {
+        grid-template-columns: 1fr
+      }
+    }
+
+    /* Menu móvel */
+    .mobile {
+      display: none;
+      position: fixed;
+      inset: 64px 0 auto 0;
+      background: rgba(10, 16, 12, .95);
+      border-top: 1px solid rgba(255, 255, 255, .08);
+      padding: 10px 16px;
+      z-index: 40
+    }
+
+    .mobile a {
+      display: block;
+      padding: 12px;
+      border-radius: 12px;
+      color: var(--muted)
+    }
+
+    .mobile a:hover {
+      background: rgba(255, 255, 255, .06);
+      color: var(--text)
+    }
+
+    /* Botão voltar ao topo */
+    #toTop {
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      border: none;
+      border-radius: 999px;
+      padding: 10px 12px;
+      cursor: pointer;
+      background: var(--brand);
+      color: #061009;
+      font-weight: 800;
+      display: none;
+      box-shadow: var(--shadow)
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container nav">
+      <a href="#" class="brand" aria-label="Página inicial">
+        <div class="logo"> <img
+            src="data:image/png;base64,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"
+            alt="logo_agro"> </div>
+        <!--<span class="logo" aria-hidden="true">🌱</span>-->
+        <span>Agro na Escola</span>
+      </a>
+      <nav class="menu" aria-label="Seções do site">
+        <a href="#sobre" class="active">Sobre</a>
+        <a href="#areas">Áreas do Agro</a>
+        <a href="#galeria">Galeria</a>
+        <a href="#noticias">Notícias</a>
+        <a href="#eventos">Eventos</a>
+        <!-- <a href="#contato">Contato</a> -->
+      </nav>
+      <button class="burger" id="burger" aria-label="Abrir menu">☰</button>
+      <!-- <button class="cta" onclick="document.getElementById('contato').scrollIntoView({behavior:'smooth'})">Relatar um
+        problema</button> --> <!-- botao de contato -->
+    </div>
+    <div class="mobile" id="mobileMenu" role="dialog" aria-label="Menu">
+      <a href="#sobre">Sobre</a>
+      <a href="#areas">Áreas do Agro</a>
+      <a href="#galeria">Galeria</a>
+      <a href="#noticias">Notícias</a>
+      <a href="#eventos">Eventos</a>
+      <!-- <a href="#contato">Contato</a> -->
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero container">
+    <div class="hero-grid">
+      <div>
+        <span class="badge">🌾 Projeto escolar • 2025</span>
+        <h1>Agro: ciência, ecológia e sustentabilidade</h1>
+        <p class="lead">Este site apresenta conteúdos introdutórios sobre solo e práticas sustentáveis no campo,
+          produzidos por estudantes.</p>
+        <div class="hero-card">
+          <div class="hero-stats">
+            <div class="stat"><b>0%</b><small class="muted">Paciência</small></div>
+            <div class="stat"><b>999%</b><small class="muted">Preguiça</small></div>
+            <div class="stat"><b>1000%</b><small class="muted">Conteúdo adulto</small></div>
+          </div>
+          <div class="muted">Obs: Informações retiradas dos líderes de classe.</div>
+        </div>
+      </div>
+      <div class="hero-img" role="img" aria-label="Plantação vista do alto"></div>
+    </div>
+  </section>
+
+  <!-- Sobre -->
+  <section id="sobre">
+    <div class="container">
+      <div class="section-title">
+        <h2>Sobre o projeto</h2>
+        <span class="muted"></span>
+      </div>
+      <div class="grid grid-2">
+        <article class="card">
+          <div class="card-body">
+            <span class="tag">Objetivo</span>
+            <h3>Aprender fazendo</h3>
+            <p class="muted">Explorar o agro como campo multidisciplinar, conectando biologia, geografia, química e
+              tecnologia, com foco em boas práticas e inovação.</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-body">
+            <span class="tag">Como usar</span>
+            <h3>Edite com sua turma</h3>
+            <p class="muted">Troque textos, imagens e cartões por conteúdos produzidos pelos alunos. Esta página é
+              totalmente estática e funciona offline.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Áreas do Agro -->
+  <section id="areas">
+    <div class="container">
+      <div class="section-title">
+        <h2>Áreas do Agro</h2>
+        <!-- <a class="muted" href="#contato">Sugira um tema →</a> -->
+      </div>
+      <div class="grid grid-3">
+        <article class="card">
+          <div class="img">
+            <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=1200&auto=format&fit=crop"
+              alt="Solo fértil">
+          </div>
+          <div class="card-body">
+            <span class="tag">Solo</span>
+            <h3>Manejo e conservação</h3>
+            <p class="muted">Textura, pH, matéria orgânica e técnicas como plantio direto e terraceamento.</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="img">
+            <img src="https://images.unsplash.com/photo-1506619216599-9d16d0903dfd?q=80&w=1200&auto=format&fit=crop"
+              alt="Plantação de grãos">
+          </div>
+          <div class="card-body">
+            <span class="tag">Culturas</span>
+            <h3>Grãos e hortaliças</h3>
+            <p class="muted">Ciclo das plantas, adubação, irrigação e rotação de culturas.</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="img">
+            <img src="https://images.unsplash.com/photo-1600762251650-0f3ce0dce274?q=80&w=1200&auto=format&fit=crop"
+              alt="Gado no pasto">
+          </div>
+          <div class="card-body">
+            <span class="tag">Pecuária</span>
+            <h3>Bem-estar e nutrição</h3>
+            <p class="muted">Manejo nutricional, sanidade animal e pastagens sustentáveis.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Galeria -->
+  <section id="galeria">
+    <div class="container">
+      <div class="section-title">
+        <h2>Galeria</h2>
+        <span class="muted">Substitua pelas suas fotos</span>
+      </div>
+      <div class="grid grid-3">
+        <div class="card" href="" aria-label="Abrir foto 1"> </div>
+        <div class="img">
+          <img src="https://s11.aconvert.com/convert/p3r68-cdx67/p8n0u-n9lpp.jpg" alt="Ferrari">
+
+        </div>
+        <div class="card" href=""> </div>
+        <div class="img">
+          <img src="https://images.pexels.com/photos/2922140/pexels-photo-2922140.jpeg" alt="Roda Ferrari">
+        </div>
+        <div class="card" href=""> </div>
+        <div class="img">
+          <img src="https://images.pexels.com/photos/2834653/pexels-photo-2834653.jpeg" alt="Volante Ferrari">
+        </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Notícias -->
+  <section id="noticias">
+    <div class="container">
+      <div class="section-title">
+        <h2>Notícias</h2>
+        <!-- <a class="muted" href="#contato">Enviar matéria →</a> -->
+      </div>
+      <div class="grid grid-3">
+        <article class="card">
+          <div class="card-body">
+            <span class="tag">Atualização</span>
+            <h3>Título da notícia</h3>
+            <p class="muted">Resumo curto da notícia. Troque pelo conteúdo real da escola.</p>
+            <p><a href="#" target="_blank" rel="noopener">Ler mais</a></p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-body">
+            <span class="tag">Projeto</span>
+            <h3>Feira do Conhecimento</h3>
+            <p class="muted">Alunos apresentam experimentos sobre solo e germinação.</p>
+            <p><a href="#" target="_blank" rel="noopener">Ver detalhes</a></p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-body">
+            <span class="tag">Dica</span>
+            <h3>Leitura da semana</h3>
+            <p class="muted">Artigo introdutório sobre agricultura de precisão.</p>
+            <p><a href="#" target="_blank" rel="noopener">Acessar</a></p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Eventos -->
+  <section id="eventos">
+    <div class="container">
+      <div class="section-title">
+        <h2>Eventos</h2>
+        <span class="muted">Anote as próximas datas</span>
+      </div>
+      <div class="timeline">
+        <div class="event">
+          <div class="date"><b>15/09</b><small>Oficina</small></div>
+          <div>
+            <h3>Oficina de compostagem</h3>
+            <p class="muted">Prática de compostagem com resíduos da cantina. Trazer luvas.</p>
+          </div>
+        </div>
+        <div class="event">
+          <div class="date"><b>28/09</b><small>Visita</small></div>
+          <div>
+            <h3>Visita à propriedade local</h3>
+            <p class="muted">Observação de manejo de pastagens e irrigação. Autorização dos responsáveis.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contato -->
+  <!-- <section id="contato">
+    <div class="container">
+      <div class="section-title">
+        <h2>Contato</h2>
+        <span class="muted">Envie dúvidas ou materiais</span>
+      </div>
+      <form class="card" onsubmit="event.preventDefault(); alert('Mensagem enviada! (demonstração)')">
+        <div class="card-body">
+          <div class="grid grid-2">
+            <label>
+              Nome<br>
+              <input required name="nome" aria-label="Nome"
+                style="width:100%; padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,.14); background:#0f150f; color:var(--text)">
+            </label>
+            <label>
+              E-mail<br>
+              <input required type="email" name="email" aria-label="E-mail"
+                style="width:100%; padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,.14); background:#0f150f; color:var(--text)">
+            </label>
+          </div>
+          <label>
+            Mensagem<br>
+            <textarea required name="msg" rows="4" aria-label="Mensagem"
+              style="width:100%; padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,.14); background:#0f150f; color:var(--text)"></textarea>
+          </label>
+          <div style="display:flex; gap:8px; align-items:center; margin-top:10px">
+            <button class="cta" type="submit">Enviar</button>
+            <span class="muted">Demonstração – configure no backend da escola se quiser receber por e-mail.</span>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section> --> <!-- Forma de contato desativada -->
+
+  <!-- Rodapé -->
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <div class="brand"><span class="logo" aria-hidden="true">🌱</span><span>Agro na Escola</span></div>
+        <p class="muted">Conteúdo didático para uso interno. Atualize com as produções da turma.</p>
+      </div>
+      <div>
+        <h4>Seções</h4>
+        <a href="#sobre">Sobre</a><br>
+        <a href="#areas">Áreas</a><br>
+        <a href="#galeria">Galeria</a>
+      </div>
+      <div>
+        <h4>Recursos</h4>
+        <a href="#noticias">Notícias</a><br>
+        <a href="#eventos">Eventos</a><br>
+        <!--<a href="#contato">Contato</a>-->
+      </div>
+    </div>
+    <div class="container copyright">
+      © <span id="year"></span> CEMA. Todos os direitos reservados.
+    </div>
+  </footer>
+
+  <button id="toTop" title="Voltar ao topo">↑</button>
+
+  <script>
+    // Ano no rodapé
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Menu móvel
+    const burger = document.getElementById('burger');
+    const mobile = document.getElementById('mobileMenu');
+    burger.addEventListener('click', () => {
+      const opened = mobile.style.display === 'block';
+      mobile.style.display = opened ? 'none' : 'block';
+      burger.setAttribute('aria-expanded', String(!opened));
+    });
+    mobile.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => mobile.style.display = 'none');
+    });
+
+    // Voltar ao topo
+    const toTop = document.getElementById('toTop');
+    window.addEventListener('scroll', () => {
+      toTop.style.display = window.scrollY > 500 ? 'block' : 'none';
+    });
+    toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  </script>
+</body>
+
+</html>
